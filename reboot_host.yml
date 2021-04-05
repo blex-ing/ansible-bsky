@@ -1,0 +1,16 @@
+---
+- name: exemple 
+  gather_facts: true
+  hosts: otherhost
+  become_user: true
+  tasks:
+    - name: Restar server
+      shell: reboot
+
+    - name: Wait for server to restart
+      local_action:
+        module: wait_for
+          host=192.168.87.131
+          port=22
+          delay=1
+          timeout=300
