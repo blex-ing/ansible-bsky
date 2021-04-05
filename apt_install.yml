@@ -1,0 +1,31 @@
+---
+
+- name: "Blockinfile to edit files"
+  gather_facts: true
+  hosts: localhost
+  become: true
+  vars:
+    packages:
+      - mysql-server
+      - phpmyadmin
+  tasks:
+    - name: "Install packages old style with explicit list"
+      apt:
+        name: "{{ item }}"
+      with_items:
+        - mysql-server
+        - phpmyadmin
+    - name: "Install packages old style using varibles"
+      apt:
+        name: "{{ item }}"
+      with_items:
+        - "{{ packages }}"
+    - name: "Install packages with explicit list"
+      apt:
+        name: ['mysql-server', 'phpmyadmin']
+    - name: "Install packages new style using varibles"
+      apt:
+        name: "{{ packages }}"
+  
+    
+
