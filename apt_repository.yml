@@ -1,8 +1,9 @@
 ---
 
 - name: "apt_repository to manage APT repositories"
-  gether_facts: true
+  gather_facts: true
   hosts: localhost
+  become: true
   tasks:
     - name: "Add APT OpenStack repositori for Ubuntu Xenial"
       apt_repository:

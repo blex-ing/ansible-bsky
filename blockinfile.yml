@@ -3,6 +3,7 @@
 - name: Blockinfile to edit files
   gather_facts: true
   hosts: localhost
+  become: true
   tasks:
     - name: "Adding Ansible manager and managed nodes to /etc/hosts"
       blockinfile:
