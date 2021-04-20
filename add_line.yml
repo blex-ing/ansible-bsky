@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks:
+  - name: 'Add one line on File'
+    lineinfile:
+      path: '~/test.txt'
+      create: true
+      state: present
+      line: '¡Hello word!'

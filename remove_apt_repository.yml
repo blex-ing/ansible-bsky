@@ -1,0 +1,11 @@
+---
+- name: apt_repository to manage APT repositories
+  gather_facts: true
+  hosts: localhost
+  become_user: true
+
+  tasks:
+    - name: "Remove APT OpenStack repository for Ubuntu Xenial"
+      apt_repository:
+        repo: "deb http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/ocata main"
+        state: absent

@@ -1,0 +1,7 @@
+---
+- hosts: otherhost
+  remote_user: lex
+  tasks:
+   - name: test connection
+     ping:
+     remote_user: lex

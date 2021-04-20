@@ -1,0 +1,14 @@
+---
+
+- name: Blockinfile to edit files
+  gather_facts: true
+  hosts: localhost
+  become: true
+  tasks:
+    - name: "Adding Ansible manager and managed nodes to /etc/hosts"
+      blockinfile:
+        name: /etc/hosts
+        block:  |
+          #Managed-1
+          192.168.87.131
+        marker: "# {mark} ANSIBLE MANAGED BLOCK manager and managed nodes"

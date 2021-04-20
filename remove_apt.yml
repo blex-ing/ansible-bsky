@@ -1,0 +1,11 @@
+---
+
+- name: Remove apt packages
+  gather_facts: true
+  hosts: localhost
+
+  tasks:
+    - name: Removing phpmyadmin
+      apt:
+        name: phpmyadmin
+        state: absent

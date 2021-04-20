@@ -1,0 +1,10 @@
+---
+
+- name: Run commands with shell
+  hosts: localhost
+
+  tasks:
+    - name: Copy example.txt
+      shell: 'cp example.txt example.bak'
+      args:
+        chdir: /home/lex
