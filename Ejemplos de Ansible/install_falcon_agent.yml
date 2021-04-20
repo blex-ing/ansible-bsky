@@ -30,21 +30,21 @@
       include_tasks: "./ "
       when:
         - ansible_distribution_major_version == '9'
-         - ansible_distribution | lower == 'debian'
+        - ansible_distribution | lower == 'debian'
     # RHEL BLOCK
 
     - name: "Falcon Agent | Install Falcon"
       include_tasks: "./ "
       when:
         - ansible_distribution_major_version in
-         - ansible_distribution | lower == 'redhat'
+        - ansible_distribution | lower == 'redhat'
     # CentOS BLOCK
 
     - name: "Falcon Agent | Install Falcon"
       include_tasks: "./ "
       when:
         - ansible_distribution_major_version in
-         - ansible_distribution | lower == 'centos'
+        - ansible_distribution | lower == 'centos'
 
     # Oracle BLOCK
 
@@ -52,7 +52,7 @@
       include_tasks: "./ "
       when:
         - ansible_distribution_major_version in
-         - ansible_distribution | lower == oracle
+        - ansible_distribution | lower == oracle
 
     # SUSE 11/12/15 BLOCK
 
@@ -60,6 +60,6 @@
       include_tasks: "./ "
       when:
         - ansible_distribution_major_version in ['11', '12', '15']
-         - ansible_distribution | lower == 'suse'
+        - ansible_distribution | lower == 'suse'
 
 #soportar Amazon Linux, Amazon Linux 2, Amazon Linux 2- arm64, debían 9, RHEL/CentOS/Oracle 6, RHEL/CentOS/Oracle 7, RHEL/CentOS/Oracle 8, SUSE 11/12/15.
