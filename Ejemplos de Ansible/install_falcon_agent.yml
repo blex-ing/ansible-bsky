@@ -1,0 +1,65 @@
+---
+
+- name:
+  hosts: all
+  gather_facts: true
+  tasks:
+
+
+    # AMAZON LINUX BLOCK
+
+    - name: "Falcon Agent | Install Falcon in Amazon Linux "
+      include_tasks: "./ "
+      when:
+        - ansible_distribution_major_version == '1'
+        - ansible_distribution | lower == 'amazon'
+    
+    - name: "Falcon Agent | Install Falcon in Amazon Linux 2"
+      include_tasks: ./install_anitivirus_amazon_linux_2.yml   #directorio
+      when:
+        - ansible_distribution_major_version == '2'
+        - ansible_distribution | lower == 'amazon'
+    
+    - name: "Falcon Agent | Install Falcon in Amazon Linux 2- arm64"
+      include_tasks: "./ "
+      when:
+        - ansible_distribution_major_version == '2- arm64'
+        - ansible_distribution | lower == 'amazon'
+    # DEBIAN BLOCK
+    - name: "Falcon Agent | Install Falcon in Debian"
+      include_tasks: "./ "
+      when:
+        - ansible_distribution_major_version == '9'
+         - ansible_distribution | lower == 'debian'
+    # RHEL BLOCK
+
+    - name: "Falcon Agent | Install Falcon"
+      include_tasks: "./ "
+      when:
+        - ansible_distribution_major_version in
+         - ansible_distribution | lower == 'redhat'
+    # CentOS BLOCK
+
+    - name: "Falcon Agent | Install Falcon"
+      include_tasks: "./ "
+      when:
+        - ansible_distribution_major_version in
+         - ansible_distribution | lower == 'centos'
+
+    # Oracle BLOCK
+
+    - name: "Falcon Agent | Install Falcon"
+      include_tasks: "./ "
+      when:
+        - ansible_distribution_major_version in
+         - ansible_distribution | lower == oracle
+
+    # SUSE 11/12/15 BLOCK
+
+    - name: "Falcon Agent | Install Falcon"
+      include_tasks: "./ "
+      when:
+        - ansible_distribution_major_version in ['11', '12', '15']
+         - ansible_distribution | lower == 'suse'
+
+#soportar Amazon Linux, Amazon Linux 2, Amazon Linux 2- arm64, debían 9, RHEL/CentOS/Oracle 6, RHEL/CentOS/Oracle 7, RHEL/CentOS/Oracle 8, SUSE 11/12/15.

@@ -1,0 +1,14 @@
+- name: Falcon | Install Falcon Sensor {{ansible_distribution_major_version}}
+  yum:
+    name: ./falcon-sensor-6.16.0-11307.amzn2.x86_64.rpm   #local path
+    state: present
+  #shell: yum install falcon-sensor-6.16.0-11307.amzn2.x86_64.rpm
+    
+- name: Falcon | Set the CID  on the sensor
+  commmand: "/opt/CrowdStrike/falconctl -s --cid=<CID>" # your CID
+
+- name: Falcon | Start the sensor
+  service:
+    name: falson-censor
+    state: started
+  shell: systemctl start falcon-sensor
