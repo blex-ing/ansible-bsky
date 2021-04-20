@@ -31,32 +31,31 @@
       when:
         - ansible_distribution_major_version == '9'
         - ansible_distribution | lower == 'debian'
+    
     # RHEL BLOCK
-
-    - name: "Falcon Agent | Install Falcon"
+    - name: "Falcon Agent | Install Falcon in RedHat"
       include_tasks: "./ "
       when:
-        - ansible_distribution_major_version in
+        - ansible_distribution_major_version == 0
         - ansible_distribution | lower == 'redhat'
+    
     # CentOS BLOCK
-
-    - name: "Falcon Agent | Install Falcon"
+    - name: "Falcon Agent | Install Falcon in Centos"
       include_tasks: "./ "
       when:
-        - ansible_distribution_major_version in
+        - ansible_distribution_major_version == 0
         - ansible_distribution | lower == 'centos'
 
     # Oracle BLOCK
-
-    - name: "Falcon Agent | Install Falcon"
+    - name: "Falcon Agent | Install Falcon in Orcle"
       include_tasks: "./ "
       when:
-        - ansible_distribution_major_version in
+        - ansible_distribution_major_version == 0
         - ansible_distribution | lower == oracle
 
     # SUSE 11/12/15 BLOCK
 
-    - name: "Falcon Agent | Install Falcon"
+    - name: "Falcon Agent | Install Falcon in Suse"
       include_tasks: "./ "
       when:
         - ansible_distribution_major_version in ['11', '12', '15']
