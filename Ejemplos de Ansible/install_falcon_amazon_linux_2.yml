@@ -9,6 +9,6 @@
 
 - name: Falcon | Start the sensor
   service:
-    name: falson-censor
+    name: falcon-censor
     state: started
-  shell: systemctl start falcon-sensor
+  #shell: systemctl start falcon-sensor

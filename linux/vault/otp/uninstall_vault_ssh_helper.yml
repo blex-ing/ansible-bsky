@@ -1,0 +1,57 @@
+---
+
+- name:
+  hosts: all
+  gather_facts: true
+  tasks:
+
+
+    # AMAZON LINUX BLOCK uninstall_vault_ssh_helper
+    - name: Vault SSH Helper | Amazon Linux {{ansible_distribution_major_version}} | Uninstalling Vault SSH Helper
+      include_tasks: ./os/ami_linux/uninstall_vault_ssh_amazon_linux.yml
+      when:
+        - ansible_distribution_major_version in ['2', '1']
+        - ansible_distribution | lower == 'amazon'
+        
+    # DEBIAN BLOCK
+    - name: Vault SSH Helper | Debian {{ansible_distribution_major_version}} | Uninstalling Vault SSH Helper
+      include_tasks: ./os/debian/uninstall_vault_ssh_debian_9.yml 
+      when:
+        - ansible_distribution_major_version == '9'
+        - ansible_distribution | lower == 'debian'
+    
+    # UBUNTU 14/16/18/20 BLOCK
+    - name: Vault SSH Helper | Ubuntu {{ansible_distribution_major_version}} | Uninstalling Vault SSH Helper
+      include_tasks: ./os/ubuntu/uninstall_vault_ssh_ubuntu.yml
+      when:
+        - ansible_distribution_major_version in ['14', '16', '18', '20']
+        - ansible_distribution | lower == 'ubuntu'
+    
+    # RHEL BLOCK
+    - name: Vault SSH Helper | RedHat {{ansible_distribution_major_version}} | Uninstalling Vault SSH Helper
+      include_tasks: ./os/redhat/uninstall_vault_ssh_redhat.yml
+      when:
+        - ansible_distribution_major_version in ['8','7','6']
+        - ansible_distribution | lower == 'redhat'
+    
+    # CentOS BLOCK
+    - name: Vault SSH Helper | Centos {{ansible_distribution_major_version}} | Uninstalling Falcon in Centos
+      include_tasks: ./os/centos/uninstall_vault_ssh_centos.yml 
+      when:
+        - ansible_distribution_major_version in ['8','7','6']
+        - ansible_distribution | lower == 'centos'
+
+    # Oracle BLOCK
+    - name: Vault SSH Helper | Oracle {{ansible_distribution_major_version}} | Uninstalling Vault SSH Helper
+      include_tasks: ./os/oracle/uninstall_vault_ssh_oracle.yml
+      when:
+        - ansible_distribution_major_version in ['8','7','6']
+        - ansible_distribution | lower == 'oracle'
+
+    # SUSE BLOCK
+    - name: Vault SSH Helper | {{ansible_os_family}} {{ansible_distribution_major_version}} | Uninstalling Vault SSH Helper
+      include_tasks: ./os/suse/uninstall_vault_ssh_suse.yml
+      when:
+        - ansible_distribution_major_version in ['11', '12', '15']
+        - ansible_os_family | lower == 'suse'
+

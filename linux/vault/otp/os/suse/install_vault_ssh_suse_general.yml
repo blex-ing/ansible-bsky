@@ -1,0 +1,14 @@
+- name:  Vault SSH Helper | {{ansible_os_family}} Linux {{ansible_distribution_major_version}} {{ansible_architecture}} | Install Vault SSH Helper
+  include_tasks: ./os/suse/suse_15/install_vault_ssh_suse_15.yml 
+  when:
+    - ansible_distribution_major_version == '15'
+    
+- name:  Vault SSH Helper | {{ansible_os_family}} Linux {{ansible_distribution_major_version}} {{ansible_architecture}} | Install Vault SSH Helper
+  include_tasks: ./os/suse/suse_12/install_vault_ssh_suse_15.yml  
+  when:
+    - ansible_distribution_major_version == '12'
+
+- name:  Vault SSH Helper | {{ansible_os_family}} Linux {{ansible_distribution_major_version}} {{ansible_architecture}} | Install Vault SSH Helper
+  include_tasks: ./os/suse/suse_11/install_vault_ssh_suse_11.yml
+  when:
+    - ansible_distribution_major_version == '11'
